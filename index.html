@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rishikesh Rajmane | Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0B1628;--navy2:#101E35;--navy3:#152440;
+  --blue:#1D6FEB;--blue-lt:#3B8BFF;
+  --teal:#0EA5A0;--gold:#E8A920;
+  --white:#F0F4FF;--text:#CBD5E8;--muted:#6B7FA3;
+  --border:rgba(255,255,255,0.07);--card:rgba(255,255,255,0.035);
+  --R:16px;--fh:'Bricolage Grotesque',sans-serif;--fb:'Plus Jakarta Sans',sans-serif;
+}
+body{background:var(--navy);color:var(--text);font-family:var(--fb);font-size:15px;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 70% -10%,rgba(29,111,235,0.13) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 40% at 10% 80%,rgba(14,165,160,0.08) 0%,transparent 55%)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.055) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black 20%,transparent 80%)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;
+  justify-content:space-between;padding:0 48px;height:64px;
+  background:rgba(11,22,40,0.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--white);
+  display:flex;align-items:center;gap:10px}
+.nav-dot{width:8px;height:8px;background:var(--blue);border-radius:50%;
+  box-shadow:0 0 10px var(--blue);animation:blink 2.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.35}}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;
+  background:var(--blue-lt);transform:scaleX(0);transition:transform .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-btn{background:var(--blue);color:#fff!important;padding:8px 20px;border-radius:8px;
+  font-weight:600!important;transition:background .2s,transform .15s!important}
+.nav-btn::after{display:none!important}
+.nav-btn:hover{background:var(--blue-lt)!important;transform:translateY(-1px)}
+
+/* LAYOUT */
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 40px}
+section{padding:96px 0}
+.sec-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;color:var(--blue-lt);margin-bottom:14px}
+.sec-tag::before{content:'';width:20px;height:1px;background:var(--blue-lt)}
+.sec-title{font-family:var(--fh);font-size:clamp(28px,4vw,40px);font-weight:700;
+  color:var(--white);letter-spacing:-0.8px;line-height:1.15;margin-bottom:12px}
+.sec-sub{color:var(--muted);font-size:15px;font-weight:300;max-width:480px;margin-bottom:52px}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:64px}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(29,111,235,0.12);border:1px solid rgba(29,111,235,0.28);
+  color:var(--blue-lt);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;
+  margin-bottom:28px;letter-spacing:0.3px;animation:fadeUp .6s ease both}
+.chip-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2s ease-in-out infinite}
+.hero-name{font-family:var(--fh);font-size:clamp(40px,6vw,70px);font-weight:700;
+  color:var(--white);letter-spacing:-2px;line-height:1.05;animation:fadeUp .6s .08s ease both}
+.hero-name em{font-style:normal;background:linear-gradient(135deg,var(--blue-lt),var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-role{font-size:15px;font-weight:400;color:var(--muted);margin-top:14px;
+  animation:fadeUp .6s .16s ease both}
+.hero-role strong{color:var(--gold);font-weight:600}
+.hero-desc{margin-top:20px;color:var(--text);font-size:15px;font-weight:300;line-height:1.85;
+  max-width:540px;animation:fadeUp .6s .22s ease both}
+
+.hero-stats{display:flex;gap:0;margin-top:42px;border:1px solid var(--border);
+  border-radius:var(--R);overflow:hidden;animation:fadeUp .6s .3s ease both}
+.h-stat{flex:1;padding:18px 20px;border-right:1px solid var(--border);
+  background:var(--card);transition:background .2s}
+.h-stat:last-child{border-right:none}
+.h-stat:hover{background:rgba(255,255,255,0.06)}
+.h-num{font-family:var(--fh);font-size:26px;font-weight:700;color:var(--white);line-height:1}
+.h-num span{color:var(--blue-lt)}
+.h-lbl{font-size:11px;color:var(--muted);margin-top:4px}
+
+.hero-cta{display:flex;gap:14px;margin-top:34px;animation:fadeUp .6s .36s ease both}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;
+  font-size:14px;font-weight:600;transition:all .2s;cursor:pointer}
+.btn-p{background:var(--blue);color:#fff;border:1px solid transparent}
+.btn-p:hover{background:var(--blue-lt);transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,111,235,0.3)}
+.btn-s{background:transparent;color:var(--white);border:1px solid var(--border)}
+.btn-s:hover{border-color:rgba(255,255,255,0.22);transform:translateY(-2px)}
+
+/* DATA CARD */
+.hero-visual{animation:fadeUp .6s .2s ease both}
+.data-card{background:var(--navy2);border:1px solid var(--border);border-radius:20px;
+  padding:24px;width:280px;box-shadow:0 24px 64px rgba(0,0,0,0.4)}
+.dc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.dc-ttl{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.5px}
+.dc-badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;
+  background:rgba(14,165,160,0.15);border:1px solid rgba(14,165,160,0.3);color:var(--teal)}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:80px;margin-bottom:20px}
+.bc{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+.bar{width:100%;border-radius:4px 4px 0 0}
+.bar.b{background:linear-gradient(180deg,var(--blue),rgba(29,111,235,0.4))}
+.bar.t{background:linear-gradient(180deg,var(--teal),rgba(14,165,160,0.4))}
+.bar.g{background:linear-gradient(180deg,var(--gold),rgba(232,169,32,0.4))}
+.bl{font-size:9px;color:var(--muted)}
+.dc-div{height:1px;background:var(--border);margin-bottom:16px}
+.dc-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.dc-row:last-child{margin-bottom:0}
+.dc-lbl{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.dc-dot{width:6px;height:6px;border-radius:50%}
+.dc-val{font-size:13px;font-weight:600;color:var(--white)}
+.dc-up{font-size:10px;color:var(--teal);font-weight:600}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ABOUT */
+#about{border-top:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start}
+.about-text p{color:var(--text);font-size:15px;font-weight:300;line-height:1.9;margin-bottom:18px}
+.about-text p strong{color:var(--white);font-weight:600}
+.promo-card{margin-top:28px;display:flex;align-items:flex-start;gap:16px;padding:20px;
+  border-radius:14px;background:rgba(232,169,32,0.07);border:1px solid rgba(232,169,32,0.2)}
+.promo-ico{font-size:24px;flex-shrink:0;margin-top:2px}
+.promo-body h4{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:4px}
+.promo-body p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+.info-cards{display:flex;flex-direction:column;gap:12px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:18px 20px;display:flex;align-items:center;gap:16px;transition:all .22s}
+.info-card:hover{background:rgba(255,255,255,0.06);transform:translateX(4px);border-color:rgba(29,111,235,0.25)}
+.ic-ico{width:40px;height:40px;border-radius:10px;background:rgba(29,111,235,0.1);
+  border:1px solid rgba(29,111,235,0.2);display:flex;align-items:center;justify-content:center;
+  font-size:17px;flex-shrink:0}
+.ic-body h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:2px}
+.ic-body p{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* SKILLS */
+#skills{border-top:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sk-card{background:var(--card);border:1px solid var(--border);border-radius:var(--R);
+  padding:24px;transition:all .22s;position:relative;overflow:hidden}
+.sk-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--teal));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.sk-card:hover{background:rgba(255,255,255,0.055);transform:translateY(-4px);border-color:rgba(29,111,235,0.22)}
+.sk-card:hover::after{transform:scaleX(1)}
+.sk-icon{font-size:26px;margin-bottom:14px;display:block}
+.sk-name{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--white);margin-bottom:14px}
+.sk-tags{display:flex;flex-wrap:wrap;gap:6px}
+.sk-tag{font-size:11px;font-weight:500;padding:4px 10px;border-radius:6px;
+  background:rgba(29,111,235,0.1);color:var(--blue-lt);border:1px solid rgba(29,111,235,0.18)}
+.sk-tag.t{background:rgba(14,165,160,0.1);color:var(--teal);border-color:rgba(14,165,160,0.2)}
+.sk-tag.g{background:rgba(232,169,32,0.1);color:var(--gold);border-color:rgba(232,169,32,0.2)}
+
+/* EXPERIENCE */
+#experience{border-top:1px solid var(--border)}
+.exp-list{display:flex;flex-direction:column;gap:22px}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--R);
+  padding:32px;transition:all .22s;position:relative}
+.exp-card:hover{background:rgba(255,255,255,0.05);border-color:rgba(29,111,235,0.22)}
+.exp-card::before{content:'';position:absolute;left:0;top:24px;bottom:24px;width:3px;
+  border-radius:0 3px 3px 0;background:linear-gradient(180deg,var(--blue),var(--teal));
+  opacity:0;transition:opacity .22s}
+.exp-card:hover::before{opacity:1}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.exp-role{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--white);letter-spacing:-0.3px}
+.exp-period{font-size:12px;font-weight:600;padding:4px 14px;border-radius:100px;white-space:nowrap;
+  background:rgba(29,111,235,0.1);border:1px solid rgba(29,111,235,0.22);color:var(--blue-lt)}
+.exp-co{font-size:13px;color:var(--muted);margin-bottom:20px}
+.exp-co strong{color:var(--gold);font-weight:600}
+.exp-bullets{display:flex;flex-direction:column;gap:9px}
+.exp-bullets li{list-style:none;font-size:13.5px;color:var(--text);padding-left:18px;
+  position:relative;line-height:1.75;font-weight:300}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--blue-lt);font-size:10px;top:5px}
+.exp-bullets li strong{color:var(--white);font-weight:600}
+.promoted-tag{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:11px;
+  font-weight:600;padding:5px 14px;border-radius:100px;
+  background:rgba(232,169,32,0.1);border:1px solid rgba(232,169,32,0.25);color:var(--gold)}
+
+/* PROJECTS */
+#projects{border-top:1px solid var(--border)}
+.proj-featured{background:var(--navy2);border:1px solid rgba(29,111,235,0.2);border-radius:20px;
+  padding:36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;
+  margin-bottom:20px;transition:all .22s}
+.proj-featured:hover{border-color:rgba(29,111,235,0.4);transform:translateY(-3px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+.pf-icon{width:64px;height:64px;border-radius:16px;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(29,111,235,0.25),rgba(14,165,160,0.2));
+  border:1px solid rgba(29,111,235,0.25);display:flex;align-items:center;justify-content:center;font-size:28px}
+.pf-flag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:8px}
+.pf-title{font-family:var(--fh);font-size:18px;font-weight:700;color:var(--white);
+  letter-spacing:-0.3px;margin-bottom:10px}
+.pf-desc{font-size:13.5px;color:var(--muted);line-height:1.75;font-weight:300}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.ptag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:6px;
+  background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted)}
+
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--R);
+  padding:26px;transition:all .22s;display:flex;flex-direction:column;gap:12px}
+.proj-card:hover{background:rgba(255,255,255,0.055);transform:translateY(-4px);border-color:rgba(29,111,235,0.22)}
+.pc-icon{width:44px;height:44px;border-radius:11px;background:rgba(29,111,235,0.1);
+  border:1px solid rgba(29,111,235,0.18);display:flex;align-items:center;justify-content:center;font-size:20px}
+.pc-title{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--white);letter-spacing:-0.2px}
+.pc-desc{font-size:12.5px;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* EDUCATION */
+#education{border-top:1px solid var(--border)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.edu-list{display:flex;flex-direction:column;gap:14px}
+.edu-item{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:22px;transition:all .22s;display:flex;gap:16px;align-items:flex-start}
+.edu-item:hover{background:rgba(255,255,255,0.05);border-color:rgba(29,111,235,0.22)}
+.edu-yr{font-size:11px;font-weight:700;color:var(--blue-lt);background:rgba(29,111,235,0.1);
+  border:1px solid rgba(29,111,235,0.2);padding:4px 10px;border-radius:6px;white-space:nowrap;margin-top:2px}
+.edu-info h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.edu-info p{font-size:12px;color:var(--muted);line-height:1.5}
+.edu-grade{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;color:var(--gold);
+  background:rgba(232,169,32,0.1);border:1px solid rgba(232,169,32,0.2);padding:2px 10px;border-radius:5px}
+
+.certs-title{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--white);
+  margin-bottom:20px;letter-spacing:-0.3px}
+.cert-list{display:flex;flex-direction:column;gap:12px}
+.cert-item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:16px 18px;transition:all .2s}
+.cert-item:hover{background:rgba(255,255,255,0.05);border-color:rgba(29,111,235,0.22)}
+.cert-ico{width:36px;height:36px;border-radius:9px;flex-shrink:0;background:rgba(14,165,160,0.1);
+  border:1px solid rgba(14,165,160,0.2);display:flex;align-items:center;justify-content:center;font-size:16px}
+.cert-info h5{font-size:13px;font-weight:600;color:var(--white);margin-bottom:2px}
+.cert-info p{font-size:11px;color:var(--muted)}
+
+/* CONTACT */
+#contact{border-top:1px solid var(--border)}
+.contact-wrap{background:var(--navy2);border:1px solid var(--border);border-radius:24px;
+  padding:60px 48px;display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center;
+  position:relative;overflow:hidden}
+.contact-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--teal),var(--gold))}
+.contact-left h2{font-family:var(--fh);font-size:32px;font-weight:700;color:var(--white);
+  letter-spacing:-1px;margin-bottom:10px;line-height:1.2}
+.contact-left p{font-size:14px;color:var(--muted);font-weight:300;line-height:1.7}
+.contact-links{display:flex;flex-direction:column;gap:12px}
+.c-link{display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:12px;
+  font-size:13px;font-weight:600;min-width:260px;transition:all .2s}
+.cl-em{background:var(--blue);color:#fff}
+.cl-em:hover{background:var(--blue-lt);transform:translateY(-2px);box-shadow:0 8px 20px rgba(29,111,235,0.3)}
+.cl-li{background:rgba(255,255,255,0.05);color:var(--white);border:1px solid var(--border)}
+.cl-li:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px)}
+.cl-ph{background:rgba(14,165,160,0.1);color:var(--teal);border:1px solid rgba(14,165,160,0.2)}
+.cl-ph:hover{background:rgba(14,165,160,0.18);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;text-align:center;padding:28px 40px;
+  border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+footer strong{color:var(--text);font-weight:600}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+.rv.show{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 20px}.nav-links{display:none}
+  .wrap{padding:0 20px}
+  .hero-inner{grid-template-columns:1fr}.hero-visual{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .proj-featured{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr;padding:36px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><div class="nav-dot"></div>Rishikesh Rajmane</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact" class="nav-btn">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+<div class="wrap">
+<div class="hero-inner">
+  <div class="hero-left">
+    <div class="hero-chip"><div class="chip-dot"></div>Open to opportunities · Mumbai</div>
+    <h1 class="hero-name">Data Analyst<br>&amp; <em>BFSI Specialist</em></h1>
+    <p class="hero-role">Rishikesh Rajmane &nbsp;·&nbsp; <strong>Choice TechLab, Mumbai</strong></p>
+    <p class="hero-desc">I turn complex financial data into clear business decisions — building dashboards, automating reports, and making data work across Equity, Insurance, Wealth &amp; Banking verticals.</p>
+
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-num">1.5<span>+</span></div><div class="h-lbl">Years Exp.</div></div>
+      <div class="h-stat"><div class="h-num">6<span>+</span></div><div class="h-lbl">Projects</div></div>
+      <div class="h-stat"><div class="h-num">200<span>+</span></div><div class="h-lbl">Partners Automated</div></div>
+      <div class="h-stat"><div class="h-num">4</div><div class="h-lbl">BFSI Verticals</div></div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-p">View My Work →</a>
+      <a href="#contact"  class="btn btn-s">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="data-card">
+      <div class="dc-head">
+        <span class="dc-ttl">DASHBOARD OVERVIEW</span>
+        <span class="dc-badge">● Live</span>
+      </div>
+      <div class="bar-chart">
+        <div class="bc"><div class="bar b" style="height:45px"></div><span class="bl">Q1</span></div>
+        <div class="bc"><div class="bar t" style="height:62px"></div><span class="bl">Q2</span></div>
+        <div class="bc"><div class="bar b" style="height:38px"></div><span class="bl">Q3</span></div>
+        <div class="bc"><div class="bar g" style="height:74px"></div><span class="bl">Q4</span></div>
+        <div class="bc"><div class="bar t" style="height:55px"></div><span class="bl">Q5</span></div>
+        <div class="bc"><div class="bar b" style="height:80px"></div><span class="bl">Q6</span></div>
+      </div>
+      <div class="dc-div"></div>
+      <div class="dc-row">
+        <span class="dc-lbl"><span class="dc-dot" style="background:var(--blue)"></span>Retention Rate</span>
+        <span class="dc-val">87.4% <span class="dc-up">↑3.2%</span></span>
+      </div>
+      <div class="dc-row">
+        <span class="dc-lbl"><span class="dc-dot" style="background:var(--teal)"></span>Conversion</span>
+        <span class="dc-val">62.1% <span class="dc-up">↑1.8%</span></span>
+      </div>
+      <div class="dc-row">
+        <span class="dc-lbl"><span class="dc-dot" style="background:var(--gold)"></span>MTD Revenue</span>
+        <span class="dc-val">₹4.2L <span class="dc-up">↑12%</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="wrap">
+  <div class="sec-tag">About Me</div>
+  <div class="sec-title">The person behind the data</div>
+  <div class="about-grid">
+    <div class="about-text rv">
+      <p>I'm a <strong>Data Analyst and Associate Engineer</strong> at Choice TechLab, Mumbai — with 1.5+ years of real-world BFSI experience working at the intersection of financial data and business intelligence.</p>
+      <p>After completing a <strong>Data Science with AI &amp; ML course</strong> at IT Vedant, I joined Choice Connect as a Data Analytics Intern. Over 6 months I built production dashboards, automated reporting pipelines, and cleaned financial data across all four business verticals — Equity, Insurance, Wealth, and Banking.</p>
+      <p>I was <strong>promoted to a full-time role based on performance</strong>, and now lead data operations for the <strong>Growth Setu project</strong>. I've worked with real financial data from <strong>Experian, Poonawala Fincorp, and IDFC First Bank</strong>.</p>
+      <div class="promo-card">
+        <div class="promo-ico">⭐</div>
+        <div class="promo-body">
+          <h4>Promoted on Performance</h4>
+          <p>Converted from intern to full-time Associate Engineer with a significant hike — recognised for building automation and dashboards that saved days of manual work every week.</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-cards rv d2">
+      <div class="info-card"><div class="ic-ico">🏢</div><div class="ic-body"><h4>Current Role</h4><p>Associate Engineer – Product Management · Choice TechLab · Mumbai</p></div></div>
+      <div class="info-card"><div class="ic-ico">📊</div><div class="ic-body"><h4>Domain Focus</h4><p>BFSI — Equity · Insurance · Wealth Management · Banking Products</p></div></div>
+      <div class="info-card"><div class="ic-ico">📍</div><div class="ic-body"><h4>Location</h4><p>Andheri East, Mumbai · Open to Pune, Navi Mumbai &amp; Remote</p></div></div>
+      <div class="info-card"><div class="ic-ico">🎓</div><div class="ic-body"><h4>Education</h4><p>BSc Information Technology · Mumbai University · CGPA 7.6</p></div></div>
+      <div class="info-card"><div class="ic-ico">🌐</div><div class="ic-body"><h4>Languages</h4><p>Marathi · Hindi · English</p></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="wrap">
+  <div class="sec-tag">Technical Skills</div>
+  <div class="sec-title">Tools I work with</div>
+  <p class="sec-sub">Built through real BFSI projects — not just coursework.</p>
+  <div class="skills-grid">
+    <div class="sk-card rv"><span class="sk-icon">🗄️</span><div class="sk-name">SQL &amp; Databases</div><div class="sk-tags"><span class="sk-tag">SQL</span><span class="sk-tag">MySQL</span><span class="sk-tag">PostgreSQL</span><span class="sk-tag">Joins &amp; CTEs</span><span class="sk-tag">Window Functions</span><span class="sk-tag">Aggregations</span></div></div>
+    <div class="sk-card rv d1"><span class="sk-icon">🐍</span><div class="sk-name">Python</div><div class="sk-tags"><span class="sk-tag">Pandas</span><span class="sk-tag">NumPy</span><span class="sk-tag">Matplotlib</span><span class="sk-tag">Data Cleaning</span><span class="sk-tag">Automation</span><span class="sk-tag">Email Scripts</span></div></div>
+    <div class="sk-card rv d2"><span class="sk-icon">📊</span><div class="sk-name">BI &amp; Visualisation</div><div class="sk-tags"><span class="sk-tag t">Power BI</span><span class="sk-tag t">Zoho Analytics</span><span class="sk-tag t">Excel Advanced</span><span class="sk-tag t">Power Query</span><span class="sk-tag t">Pivot Tables</span></div></div>
+    <div class="sk-card rv"><span class="sk-icon">🏦</span><div class="sk-name">BFSI Domain</div><div class="sk-tags"><span class="sk-tag g">Equity</span><span class="sk-tag g">Insurance</span><span class="sk-tag g">Wealth Mgmt</span><span class="sk-tag g">Banking</span><span class="sk-tag g">B2C Analytics</span><span class="sk-tag g">Revenue Analytics</span></div></div>
+    <div class="sk-card rv d1"><span class="sk-icon">⚙️</span><div class="sk-name">Data Engineering</div><div class="sk-tags"><span class="sk-tag">ETL Pipelines</span><span class="sk-tag">Data Cleaning</span><span class="sk-tag">Unstructured Data</span><span class="sk-tag">MIS Reporting</span><span class="sk-tag">KPI Tracking</span></div></div>
+    <div class="sk-card rv d2"><span class="sk-icon">📚</span><div class="sk-name">Currently Learning</div><div class="sk-tags"><span class="sk-tag">Tableau</span><span class="sk-tag">Azure (AZ-900)</span><span class="sk-tag">Machine Learning</span><span class="sk-tag">Advanced Python</span></div></div>
+  </div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<div class="wrap">
+  <div class="sec-tag">Work History</div>
+  <div class="sec-title">Professional Experience</div>
+  <p class="sec-sub">Real work, real impact — in one of India's most demanding domains.</p>
+  <div class="exp-list">
+
+    <div class="exp-card rv">
+      <div class="exp-top">
+        <div class="exp-role">Associate Engineer – Product Management</div>
+        <span class="exp-period">Oct 2025 – Present</span>
+      </div>
+      <div class="exp-co"><strong>Choice TechLab Private Limited</strong> &nbsp;·&nbsp; Mumbai</div>
+      <ul class="exp-bullets">
+        <li>Leading data operations for the <strong>Growth Setu project</strong> — end-to-end pipeline management, KPI tracking, and BI reporting across all verticals.</li>
+        <li>Managing complete data for <strong>Choice Connect</strong> across Equity, Insurance, Wealth, and Banking B2C operations.</li>
+        <li>Cleaned and structured <strong>unstructured financial datasets</strong> from Experian, Poonawala Fincorp, and IDFC First Bank using Python (Pandas).</li>
+        <li>Designed <strong>automated incentive slab calculations</strong> for the equity franchise network — reduced manual effort by ~80%.</li>
+        <li>Built <strong>bulk email automation</strong> in Python — one-click delivery of performance reports to 200+ franchise partners.</li>
+        <li>Working closely with Product and Tech teams to improve data accuracy and enable data-driven decisions.</li>
+      </ul>
+      <div class="promoted-tag">⭐ Promoted from Intern · Performance-based Hike</div>
+    </div>
+
+    <div class="exp-card rv d1">
+      <div class="exp-top">
+        <div class="exp-role">Data Analytics Intern</div>
+        <span class="exp-period">Apr 2025 – Oct 2025</span>
+      </div>
+      <div class="exp-co"><strong>Choice Connect Private Limited</strong> &nbsp;·&nbsp; Mumbai &nbsp;·&nbsp; 6 months</div>
+      <ul class="exp-bullets">
+        <li>Built <strong>Insurance Renewal Dashboard</strong> in Zoho Analytics — Retention %, Conversion %, and MTD/YTD KPI tracking.</li>
+        <li>Wrote and optimised complex SQL queries to extract and transform data across all B2C verticals.</li>
+        <li>Developed <strong>Revenue Contest Automation</strong> — brokerage incentive slabs via SQL and automated bulk reports via Python.</li>
+        <li>Created <strong>Connect Insurance P&L Dashboard</strong> integrating CBA mapping, transactions, and expense data.</li>
+        <li>Built <strong>Basket MIS for Equity</strong> with drill-down filters for client, investment, trade, and brokerage reporting.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<div class="wrap">
+  <div class="sec-tag">Projects</div>
+  <div class="sec-title">What I've Built</div>
+  <p class="sec-sub">Production dashboards and automation tools used by real businesses every day.</p>
+
+  <div class="proj-featured rv">
+    <div class="pf-icon">⚡</div>
+    <div>
+      <div class="pf-flag">Featured Project</div>
+      <div class="pf-title">Revenue Contest Automation – Equity Franchise</div>
+      <div class="pf-desc">Designed a brokerage-based incentive slab engine using SQL in Zoho Analytics, then built a Python automation pipeline that generates personalised performance reports and delivers them via bulk email to 200+ equity franchise partners. What previously took days of manual work now runs with a single click.</div>
+      <div class="proj-tags"><span class="ptag">SQL</span><span class="ptag">Python</span><span class="ptag">Zoho Analytics</span><span class="ptag">Email Automation</span><span class="ptag">Incentive Slabs</span></div>
+    </div>
+  </div>
+
+  <div class="proj-grid">
+    <div class="proj-card rv">
+      <div class="pc-icon">🛡️</div>
+      <div class="pc-title">Insurance Renewal Dashboard</div>
+      <div class="pc-desc">Renewal tracking with date-based buckets — Retention %, Conversion %, MTD/YTD pipeline visibility for the insurance team.</div>
+      <div class="proj-tags"><span class="ptag">SQL</span><span class="ptag">Zoho Analytics</span><span class="ptag">Insurance</span></div>
+    </div>
+    <div class="proj-card rv d1">
+      <div class="pc-icon">💰</div>
+      <div class="pc-title">Connect Insurance P&L Dashboard</div>
+      <div class="pc-desc">P&L reports integrating CBA mapping, transactions, and expenses for multi-vertical insurance profitability analysis.</div>
+      <div class="proj-tags"><span class="ptag">SQL</span><span class="ptag">Zoho Analytics</span><span class="ptag">P&L</span></div>
+    </div>
+    <div class="proj-card rv">
+      <div class="pc-icon">📈</div>
+      <div class="pc-title">Basket MIS – Equity Business</div>
+      <div class="pc-desc">Basket-wise client analysis with drill-down filters for investments, trades, and brokerage — portfolio-level reporting.</div>
+      <div class="proj-tags"><span class="ptag">SQL</span><span class="ptag">Zoho Analytics</span><span class="ptag">Equity</span></div>
+    </div>
+    <div class="proj-card rv d1">
+      <div class="pc-icon">🧹</div>
+      <div class="pc-title">Unstructured BFSI Data Pipeline</div>
+      <div class="pc-desc">Python pipeline to standardise messy financial datasets from Experian, Poonawala Fincorp, and IDFC First Bank.</div>
+      <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">Data Cleaning</span></div>
+    </div>
+    <div class="proj-card rv d2" style="grid-column:span 2">
+      <div class="pc-icon">📡</div>
+      <div class="pc-title">Finx–Jiffy API Trading MIS</div>
+      <div class="pc-desc">Near real-time MIS reporting for an API-based equity trading platform — tracking trades, revenue, and client activity for business visibility.</div>
+      <div class="proj-tags"><span class="ptag">SQL</span><span class="ptag">Zoho Analytics</span><span class="ptag">API Trading</span><span class="ptag">Real-time</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+<div class="wrap">
+  <div class="sec-tag">Education &amp; Certifications</div>
+  <div class="sec-title">Academic Background</div>
+  <p class="sec-sub">Strong IT foundation with continuous upskilling in data science and analytics.</p>
+  <div class="edu-grid">
+    <div class="edu-list">
+      <div class="edu-item rv"><span class="edu-yr">2022–25</span><div class="edu-info"><h4>Mumbai University – Patkar Varde College</h4><p>Bachelor of Science in Information Technology (BSc IT)</p><span class="edu-grade">CGPA 7.6 · Grade B+</span></div></div>
+      <div class="edu-item rv d1"><span class="edu-yr">2021–22</span><div class="edu-info"><h4>Bhartiya Vidya Bhavan's College</h4><p>HSC – Science Stream</p><span class="edu-grade">45.22%</span></div></div>
+      <div class="edu-item rv d2"><span class="edu-yr">2019–20</span><div class="edu-info"><h4>Sri Sathya Sai Vidhyamandir</h4><p>Secondary School Certificate (SSC)</p><span class="edu-grade">74.20%</span></div></div>
+    </div>
+    <div class="rv d1">
+      <div class="certs-title">Certifications</div>
+      <div class="cert-list">
+        <div class="cert-item"><div class="cert-ico">🏆</div><div class="cert-info"><h5>SQL Server for Data Analysis</h5><p>Alison</p></div></div>
+        <div class="cert-item"><div class="cert-ico">🐍</div><div class="cert-info"><h5>Python &amp; SQL for Data Science</h5><p>SCALER Topics</p></div></div>
+        <div class="cert-item"><div class="cert-ico">💾</div><div class="cert-info"><h5>SQL &amp; Relational Databases</h5><p>Cognitive Class – IBM</p></div></div>
+        <div class="cert-item"><div class="cert-ico">🤖</div><div class="cert-info"><h5>Data Science with AI &amp; ML</h5><p>IT Vedant – Full Course</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="wrap">
+  <div class="contact-wrap rv">
+    <div class="contact-left">
+      <div class="sec-tag" style="margin-bottom:16px">Let's Connect</div>
+      <h2>Open to new<br>opportunities</h2>
+      <p style="margin-top:12px">Looking for Data Analyst, Business Analyst, MIS Analyst, or Product Analyst roles in Mumbai, Pune, Navi Mumbai — or remote. Let's talk!</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:rajmanerishikesh720@gmail.com" class="c-link cl-em"><span>✉</span> rajmanerishikesh720@gmail.com</a>
+      <a href="https://www.linkedin.com/in/rishikesh-rajmane-72b346254" target="_blank" class="c-link cl-li"><span>in</span> LinkedIn Profile</a>
+      <a href="tel:+917208198616" class="c-link cl-ph"><span>📞</span> +91 72081 98616</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by <strong>Rishikesh Rajmane</strong> &nbsp;·&nbsp; Data Analyst · BFSI Domain &nbsp;·&nbsp; Mumbai, India &nbsp;·&nbsp; 2026</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('show'); }), {threshold:0.1});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if(scrollY >= s.offsetTop - 120) cur = s.id; });
+  links.forEach(a => {
+    if(!a.classList.contains('nav-btn'))
+      a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--white)' : '';
+  });
+}, {passive:true});
+</script>
+</body>
+</html>
